@@ -20,7 +20,7 @@ namespace UnitTests_ForTriangle
         {
             public void IsTreangle_Isosceles_Return_True()
             {
-                Assert.AreEqual(Triangle.CheckingForTheExistenceOfTriangle_Return_true(20,20,20),true);
+                Assert.AreEqual(Triangle.CheckingForTheExistenceOfTriangle_Return_true(30,20,40),true);
             }
 
             public void IsTreangle_Equilateral_Return_True()
