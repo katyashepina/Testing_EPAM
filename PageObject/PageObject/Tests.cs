@@ -17,7 +17,7 @@ namespace PageObject
     public class Tests
     {
         private IWebDriver browser;
-        private static string HomePage = "https://www.carrentals.com/";
+        private static string HomePage = "https://www.avtomaxi.ru/";
                
         [TestMethod]
         public void PayWithoutCorrectData()
