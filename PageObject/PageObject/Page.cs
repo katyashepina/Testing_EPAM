@@ -20,16 +20,16 @@ namespace PageObject
         protected DefaultWait<IWebDriver> fluentWait;
         protected IWebDriver driver;
         protected static int timeoutInSeconds = 30;
-        protected readonly IWebElement PayOnlineButton;
-        protected readonly IWebElement NameTenantInput;
-        protected readonly IWebElement NameClientInput;
-        protected readonly IWebElement PhoneInput;
-        protected readonly IWebElement EmailInput;
-        protected readonly IWebElement PriseInput;
-        protected readonly IWebElement ContinuePayment;
-        protected readonly IWebElement IncorrectPaymentData;
+        protected IWebElement PayOnlineButton;
+        protected IWebElement NameTenantInput;
+        protected IWebElement NameClientInput;
+        protected IWebElement PhoneInput;
+        protected IWebElement EmailInput;
+        protected IWebElement PriseInput;
+        protected IWebElement ContinuePayment;
+        protected IWebElement IncorrectPaymentData;
 
-        [Obsolete]
+        
         public Page(IWebDriver driver)
         {
             fluentWait = GetFluentWait(driver);
@@ -37,7 +37,7 @@ namespace PageObject
             this.driver = driver;
         }
 
-        [Obsolete]
+        
         private static ReadOnlyCollection<IWebElement> WaitForElement(IWebDriver webDriver, By by)
         {
             return (new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeoutInSeconds))

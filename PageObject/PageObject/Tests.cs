@@ -13,68 +13,50 @@ using PageObject;
 
 namespace PageObject
 {
-    [TestFixture]
+    [TestClass]
     public class Tests
     {
-        private static int timeoutInSeconds = 30;
-        private IWebDriver DriverPayWithoutCorrectData;
-        private IWebDriver CallBackWithoutCorrectData;
-        private string WebsiteURL;
-        Random rand = new Random();
-
-
-        [SetUp]
-        public void SetupTest()
-        {
-            WebsiteURL = "https://www.avtomaxi.ru/";
-        }
-
-        [Test, Description("Test is not complete")]
+        private IWebDriver browser;
+        private static string HomePage = "https://www.carrentals.com/";
+               
+        [TestMethod]
         public void PayWithoutCorrectData()
         {
-            DriverPayWithoutCorrectData = new ChromeDriver();
-            DriverPayWithoutCorrectData.Navigate().GoToUrl(WebsiteURL);
+            browser = new ChromeDriver();
+            browser.Navigate().GoToUrl(HomePage);
 
-            PayWithoutCorrectData payWithoutCorrectData = new PayWithoutCorrectData(DriverPayWithoutCorrectData);
+            PayOnline payOnline = new PayOnline(browser);
 
-            payWithoutCorrectData
+            payOnline
                 .PayOnlineButton()
                 .NameTenantInput("Sasha")
-                .NameClientInput("NameClientInput")
+                .NameClientInput("Katya")
                 .PhoneInput("+375292627647")
                 .EmailInput("katya@list.ru")
                 .PriseInput(123.123)
                 .ContinuePayment();
 
-            Assert.IsTrue(payWithoutCorrectData.CheckErrorLabel(), "Некорректные данные для оплаты.");
+            Assert.AreEqual("Некорректные данные для оплаты.", payOnline.CheckErrorLabel());
 
         }
 
-        [Test, Description("Test is not complete")]
+        [TestMethod]
         public void CallBackWithoutCorrectData()
         {
-            DriverCallBackWithoutCorrectData = new ChromeDriver();
-            DriverCallBackWithoutCorrectData.Navigate().GoToUrl(WebsiteURL);
+            browser = new ChromeDriver();
+            browser.Navigate().GoToUrl(HomePage);
 
-            CallBackWithoutCorrectData сallBackWithoutCorrectData = new CallBackWithoutCorrectData(DriverCallBackWithoutCorrectData);
+            CallBack callBack = new CallBack(browser);
 
-            сallBackWithoutCorrectData
+            callBack
                 .CallBackButton()
                 .CallNameInput("Katya")
                 .CallPhoneInput("+375292627647")
                 .SendButton();
 
-            Assert.IsTrue(сallBackWithoutCorrectData.CheckErrorLabel(), "Заявка успешно отправлена!");
+            Assert.AreEqual("Заявка успешно отправлена!", callBack.CheckErrorLabel());
         }
 
-        [TearDown]
-        public void TearDownTest()
-        {
-            if (DriverPayWithoutCorrectData != null)
-                DriverPayWithoutCorrectData.Quit();
-            if (DriverCallBackWithoutCorrectData != null)
-                DriverCallBackWithoutCorrectData.Quit();
-            
-        }
+      
     }
 }

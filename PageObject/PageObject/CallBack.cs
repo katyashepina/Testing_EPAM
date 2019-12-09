@@ -13,52 +13,52 @@ using OpenQA.Selenium.Support.UI;
 
 namespace PageObject
 {
-    class CallBackWithoutCorrectData : Page
+     public class CallBack : Page
     {
         [FindsBy(How = How.CssSelector, Using = ".callback open-popup-link")]
-        private readonly IWebElement CallBackButton;
+        private IWebElement CallBackButton;
 
         [FindsBy(How = How.CssSelector, Using = ".name")]
-        private readonly IWebElement CallNameInput;
+        private IWebElement CallNameInput;
 
         [FindsBy(How = How.CssSelector, Using = ".phone")]
-        private readonly IWebElement CallPhoneInput;
+        private IWebElement CallPhoneInput;
 
         [FindsBy(How = How.CssSelector, Using = ".blue-btn")]
-        private readonly IWebElement SendButton;
+        private IWebElement SendButton;
 
         [FindsBy(How = How.XPath, Using = "//div[contains(text(),'Заявка успешно отправлена!')]")]
-        private readonly IWebElement RequestSentSuccess;
+        private IWebElement RequestSentSuccess;
 
-        public CallBackWithoutCorrectData(IWebDriver driver) : base(driver) { }
+        public CallBack(IWebDriver driver) : base(driver) { }
         
-        public CallBackWithoutCorrectData FillFieldName(string text)
+        public CallBack FillFieldName(string text)
         {
             CallNameInput.SendKeys(text);
             return this;
         }
 
-        public CallBackWithoutCorrectData FillFieldPhone(string text)
+        public CallBack FillFieldPhone(string text)
         {
             CallPhoneInput.SendKeys(text);
             return this;
         }
 
-        public CallBackWithoutCorrectData SelectButtonCallMe()
+        public CallBack SelectButtonCallMe()
         {
             CallBackButton.Click();
             return this;
         }
 
-        public CallBackWithoutCorrectData SelectButtonSendData()
+        public CallBack ButtonSendData()
         {
             SendButton.Click();
             return this;
         }
 
-        public bool CheckErrorLabel()
+        public string CheckErrorLabel()
         {
-            return (RequestSentSuccess != null);
+            return RequestSentSuccess.Text;
         }
     }
 

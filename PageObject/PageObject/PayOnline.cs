@@ -15,80 +15,80 @@ using OpenQA.Selenium.Support.PageObjects;
 namespace PageObject
 {
 
-    class PayWithoutCorrectData : Page
+    public class PayOnline : Page
     {
         [FindsBy(How = How.CssSelector, Using = ".online-link")]
-        private readonly IWebElement PayOnlineButton;
+        private IWebElement PayOnlineButton;
 
         [FindsBy(How = How.CssSelector, Using = ".tenant-name")]
-        private readonly IWebElement NameTenantInput;
+        private IWebElement NameTenantInput;
 
         [FindsBy(How = How.CssSelector, Using = ".name")]
-        private readonly IWebElement NameClientInput;
+        private IWebElement NameClientInput;
 
         [FindsBy(How = How.CssSelector, Using = ".phone")]
-        private readonly IWebElement PhoneInput;
+        private IWebElement PhoneInput;
 
         [FindsBy(How = How.CssSelector, Using = ".email")]
-        private readonly IWebElement EmailInput;
+        private IWebElement EmailInput;
 
         [FindsBy(How = How.CssSelector, Using = ".price")]
-        private readonly IWebElement PriseInput;
+        private IWebElement PriseInput;
 
         [FindsBy(How = How.CssSelector, Using = ".green-btn")]
-        private readonly IWebElement ContinuePayment;
+        private IWebElement ContinuePayment;
 
         [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Некорректные данные для оплаты.')]")]
-        private readonly IWebElement IncorrectPaymentData;
+        private IWebElement IncorrectPaymentData;
 
-        [Obsolete]
-        public PayWithoutCorrectData(IWebDriver driver) : base(driver) { }
+        
+        public PayOnline (IWebDriver driver) : base(driver) { }
 
-        public PayWithoutCorrectData FillFieldNameTenant(string text)
+        public PayOnline FillFieldNameTenant(string text)
         {
             NameTenantInput.SendKeys(text);
             return this;
         }
 
-        public PayWithoutCorrectData FillFieldNAmeClient(string text)
+        public PayOnline FillFieldNAmeClient(string text)
         {
             NameClientInput.SendKeys(text);
             return this;
         }
 
-        public PayWithoutCorrectData FillFieldPhone(string text)
+        public PayOnline FillFieldPhone(string text)
         {
             PhoneInput.SendKeys(text);
             return this;
         }
 
-        public PayWithoutCorrectData FillFieldEmail(string text)
+        public PayOnline FillFieldEmail(string text)
         {
             EmailInput.SendKeys(text);
             return this;
         }
 
-        public PayWithoutCorrectData FillFieldPrise(string text)
+        public PayOnline FillFieldPrise(string text)
         {
             PriseInput.SendKeys(text);
             return this;
         }
 
-        public BookingWithoutDestination SelectPayOnline()
+        public PayOnline SelectPayOnline()
         {
             PayOnlineButton.Click();
             return this;
         }
 
-        public PayWithoutCorrectData Submit()
+        public PayOnline Submit()
         {
             ContinuePayment.Click();
             return this;
         }
 
-        public bool CheckErrorLabel()
+        public string CheckErrorLabel()
         {
-            return (IncorrectPaymentData != null);
+            return IncorrectPaymentData.Text;
         }
     }
 }
