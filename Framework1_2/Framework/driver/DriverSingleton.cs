@@ -15,8 +15,9 @@ namespace Framework.driver
 {
     public class DriverSingleton
     {
-        private static IWebDriver webDriver;
         private DriverSingleton() { }
+
+        private static IWebDriver webDriver;
         
         public static IWebDriver GetWebDriver()
         {

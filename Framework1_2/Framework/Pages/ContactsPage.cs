@@ -1,4 +1,5 @@
 ﻿using Framework.Model;
+using Framework.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
@@ -31,6 +32,8 @@ namespace Framework.Pages
 
         public ContactsPage FillInFields(User user)
         {
+            Logger.Log.Info("Fill fields on Contacts page");
+
             nameField.SendKeys(user.Name);
             phoneField.SendKeys(user.PNumber);
             emailField.SendKeys(user.EMail);
@@ -40,31 +43,38 @@ namespace Framework.Pages
         
         public ContactsPage SendButton()
         {
+            Logger.Log.Info("Send button");
+
             sendButton.Click();
 
             return this;
         }
         public ContactsPage WriteButton()
         {
+            Logger.Log.Info("Send write button");
+
             writeButton.Click();
 
             return this;
         }
+        
+        public override BasePage OpenPage()
+        {
+            Logger.Log.Info("Open Contacts page");
 
+            webDriver.Navigate().GoToUrl("https://www.avtomaxi.ru/kontakti/");
+
+            return this;
+        }
         public string GetErrorMessageText()
         {
+            Logger.Log.Info("Get error message text: " + errorMessageAlert.Text);
+
             return errorMessageAlert.Text;
         }
-
         public ContactsPage(IWebDriver webDriver) : base(webDriver)
         {
             PageFactory.InitElements(webDriver, this);
-        }
-
-        public override BasePage OpenPage()
-        {
-            webDriver.Navigate().GoToUrl("https://www.avtomaxi.ru/kontakti/");
-            return this;
         }
     }
 }

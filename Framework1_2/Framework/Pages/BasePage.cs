@@ -10,10 +10,12 @@ namespace Framework.Pages
 {
     public abstract class BasePage
     {
-        protected IWebDriver webDriver;
-        public WebDriverWait Wait;
-
         public abstract BasePage OpenPage();
+
+        protected IWebDriver webDriver;
+
+        private WebDriverWait Wait;
+
         protected BasePage(IWebDriver webDriver)
         {
             this.webDriver = webDriver;

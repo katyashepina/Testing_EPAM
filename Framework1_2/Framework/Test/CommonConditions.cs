@@ -21,8 +21,11 @@ namespace Framework.Test
         [SetUp]
         public void StartBrowserAndGoToTheSite()
         {
+            Logger.InitLogger();
+            Logger.Log.Warn("Start driver initializing.");
             webDriver = DriverSingleton.GetWebDriver();
             webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            Logger.Log.Info("Driver initialized.");
         }
 
         [TearDown]

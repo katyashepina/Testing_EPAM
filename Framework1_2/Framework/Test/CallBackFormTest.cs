@@ -6,6 +6,7 @@ using Framework;
 using Framework.Test;
 using Framework.Services;
 using Framework.Model;
+using Framework.Utils;
 
 namespace Framework.Test
 {
@@ -16,6 +17,8 @@ namespace Framework.Test
         [Category("FormTest")]
         public void SendCallBackWithCorrectData()
         {
+            Logger.Log.Info("Start SendCallBackWithCorrectData unit test.");
+
             string expectingMessage = ErrorCreater.CorrectNamePhoneEmail();
 
             User user = UserCreater.WithAllProperties();
@@ -33,6 +36,8 @@ namespace Framework.Test
         [Category("FormTest")]
         public void SendEMailIncorrectEMailAddr()
         {
+            Logger.Log.Info("Start SendEMailIncorrectEMailAddr unit test.");
+
             string expectingMessage = ErrorCreater.FormWithInvalidEMail();
 
             User user = UserCreater.UserWithIncorrectEmail();

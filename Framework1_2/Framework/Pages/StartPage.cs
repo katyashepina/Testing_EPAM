@@ -38,19 +38,17 @@ namespace Framework
 
         public StartPage FillInFields(User user)
         {
+            Logger.Log.Info("Fill fields with date on start page");
+
             rentalDateStart.SendKeys(user.PastDate);
             rentalDateEnd.SendKeys(user.FutureDate);
 
             return this;
         }
-
-        public StartPage(IWebDriver webDriver):base(webDriver)
-        {
-            PageFactory.InitElements(webDriver, this);
-        }
-
         public StartPage ClickSubmitButton()
         {
+            Logger.Log.Info("Send submit");
+
             submitButton.Click();
 
             return this;
@@ -58,6 +56,8 @@ namespace Framework
 
         public CallBackPage ClickCallBackButton()
         {
+            Logger.Log.Info("Send call back button");
+
             callBackButton.Click();
 
             return new CallBackPage(this.webDriver);
@@ -65,6 +65,8 @@ namespace Framework
 
         public PayOnlinePage ClickPayOnlineButton()
         {
+            Logger.Log.Info("Open pay online page");
+
             payOnlineButton.Click();
 
             return new PayOnlinePage(this.webDriver);
@@ -72,6 +74,8 @@ namespace Framework
 
         public AskQuestionPage ClickAskQuestionButton()
         {
+            Logger.Log.Info("Open asq question page");
+
             askQuestionButton.Click();
 
             return new AskQuestionPage(this.webDriver);
@@ -79,19 +83,30 @@ namespace Framework
 
         public ContactsPage ClickContactsButton()
         {
+            Logger.Log.Info("Send contasts button");
+
             contactsButton.Click();
 
             return new ContactsPage(this.webDriver);
+        }        
+        public override BasePage OpenPage()
+        {
+            Logger.Log.Info("Open start page");
+
+            webDriver.Navigate().GoToUrl("https://www.avtomaxi.ru/");
+
+            return this;
+        }
+        public StartPage(IWebDriver webDriver) : base(webDriver)
+        {
+            PageFactory.InitElements(webDriver, this);
         }
         public string GetErrorMessageText()
         {
+            Logger.Log.Info("Get error message text: " + errorMessageAlert.Text);
+
             return errorMessageAlert.Text;
         }
-        
-        public override BasePage OpenPage()
-        {
-            webDriver.Navigate().GoToUrl("https://www.avtomaxi.ru/");
-            return this;
-        }
+
     }
 }
