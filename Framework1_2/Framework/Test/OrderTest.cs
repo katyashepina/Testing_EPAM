@@ -51,7 +51,7 @@ namespace Framework.Test
         }
 
         [Test]
-        [Category("ContactsTest")]
+        [Category("PositiveTest")]
         public void SendOrderPositiveTest()
         {
             Logger.Log.Info("Start SendOrderPositiveTest unit test.");
@@ -91,7 +91,7 @@ namespace Framework.Test
         }
 
         [Test]
-        [Category("AskQuestionsTest")]
+        [Category("PositiveTest")]
         public void SendAskQuestionWithCorrectData()
         {
             Logger.Log.Info("Start SendAskQuestionWithCorrectData unit test.");
