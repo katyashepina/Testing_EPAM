@@ -12,6 +12,8 @@ namespace Framework.Pages
 {
     public class ContactsPage:BasePage
     {
+        private const string PageUrl = "https://www.avtomaxi.ru/kontakti/";
+
         [FindsBy(How = How.Name, Using = "name")]
         private IWebElement nameField;
 
@@ -30,51 +32,52 @@ namespace Framework.Pages
         [FindsBy(How = How.Id, Using = "success-message")]
         private IWebElement errorMessageAlert;
 
-        public ContactsPage FillInFields(User user)
+        public ContactsPage(IWebDriver webDriver) : base(webDriver)
         {
-            Logger.Log.Info("Fill fields on Contacts page");
+            PageFactory.InitElements(webDriver, this);
+        }
+        public override BasePage OpenPage()
+        {
+            webDriver.Navigate().GoToUrl(PageUrl);
 
+            return this;
+        }
+        public ContactsPage FillNameField(User user)
+        {
             nameField.SendKeys(user.Name);
+
+            return this;
+        }
+
+        public ContactsPage FillPhoneField(User user)
+        {
             phoneField.SendKeys(user.PNumber);
+
+            return this;
+        }
+        public ContactsPage FillEmailField(User user)
+        {
             emailField.SendKeys(user.EMail);
 
             return this;
         }
-        
         public ContactsPage SendButton()
         {
-            Logger.Log.Info("Send button");
-
             sendButton.Click();
 
             return this;
         }
         public ContactsPage WriteButton()
         {
-            Logger.Log.Info("Send write button");
-
             writeButton.Click();
 
             return this;
         }
-        
-        public override BasePage OpenPage()
-        {
-            Logger.Log.Info("Open Contacts page");
-
-            webDriver.Navigate().GoToUrl("https://www.avtomaxi.ru/kontakti/");
-
-            return this;
-        }
+               
         public string GetErrorMessageText()
         {
-            Logger.Log.Info("Get error message text: " + errorMessageAlert.Text);
-
             return errorMessageAlert.Text;
         }
-        public ContactsPage(IWebDriver webDriver) : base(webDriver)
-        {
-            PageFactory.InitElements(webDriver, this);
-        }
+        
     }
 }

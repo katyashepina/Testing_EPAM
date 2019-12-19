@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Framework.Utils;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -17,13 +18,12 @@ namespace Framework.driver
     {
         private DriverSingleton() { }
 
-        private static IWebDriver webDriver;
-        
+        private static IWebDriver webDriver;        
         public static IWebDriver GetWebDriver()
         {
             if(webDriver==null)
             {
-                switch(TestContext.Parameters.Get("browser"))
+                switch (TestContext.Parameters.Get("browser"))
                 {                    
                     case "edge":
                         new DriverManager().SetUpDriver(new EdgeConfig());
@@ -40,6 +40,7 @@ namespace Framework.driver
                 }
 
                 webDriver.Manage().Window.Maximize();
+                webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
             }
 
             return webDriver;

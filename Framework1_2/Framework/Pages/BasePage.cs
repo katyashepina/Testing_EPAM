@@ -14,11 +14,13 @@ namespace Framework.Pages
 
         protected IWebDriver webDriver;
 
-        private WebDriverWait Wait;
-
         protected BasePage(IWebDriver webDriver)
         {
             this.webDriver = webDriver;
+        }
+        public string GetUrlPage()
+        {
+            return this.webDriver.Url;
         }
     }
 }

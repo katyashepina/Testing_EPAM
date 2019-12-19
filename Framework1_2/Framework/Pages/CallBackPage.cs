@@ -12,6 +12,8 @@ namespace Framework
 {
     public class CallBackPage :BasePage
     {
+        private const string PageUrl = "https://www.avtomaxi.ru/";
+
         [FindsBy(How = How.Name, Using = "name")]
         private IWebElement nameField;
 
@@ -24,11 +26,24 @@ namespace Framework
         [FindsBy(How = How.ClassName, Using = "success_message")]
         private IWebElement errorMessageAlert;
 
-        public CallBackPage FillInFields(User user)
+        public CallBackPage(IWebDriver webDriver) : base(webDriver)
         {
-            Logger.Log.Info("Fill Fields on page Call Back");
+            PageFactory.InitElements(webDriver, this);
+        }
+        public override BasePage OpenPage()
+        {
+            webDriver.Navigate().GoToUrl(PageUrl);
 
+            return this;
+        }
+        public CallBackPage FillINameField(User user)
+        {
             nameField.SendKeys(user.Name);
+
+            return this;
+        }
+        public CallBackPage FillIPhoneField(User user)
+        {
             phoneField.SendKeys(user.PNumber);
 
             return this;
@@ -36,30 +51,15 @@ namespace Framework
 
         public CallBackPage SendCall()
         {
-            Logger.Log.Info("Send call");
-
             sendButton.Click();
 
             return this;
         }        
 
-        public override BasePage OpenPage()
-        {
-            Logger.Log.Info("Open Call Back page");
-
-            webDriver.Navigate().GoToUrl("https://www.avtomaxi.ru/");
-
-            return this;
-        }
         public string GetMessageText()
         {
-            Logger.Log.Info("Get error message text: " + errorMessageAlert.Text);
-
             return errorMessageAlert.Text;
         }
-        public CallBackPage(IWebDriver webDriver) : base(webDriver)
-        {
-            PageFactory.InitElements(webDriver, this);
-        }
+       
     }
 }

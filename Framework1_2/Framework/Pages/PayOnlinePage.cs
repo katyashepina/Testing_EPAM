@@ -13,6 +13,8 @@ namespace Framework.Pages
 {
     public class PayOnlinePage : BasePage
     {
+        private const string PageUrl = "https://www.avtomaxi.ru/online-payment/";
+
         [FindsBy(How = How.Name, Using = "renter-name")]
         private IWebElement nameRenterField;
 
@@ -34,45 +36,57 @@ namespace Framework.Pages
         [FindsBy(How = How.ClassName, Using = "continue_pay")]
         private IWebElement errorMessageAlert;
 
-        public PayOnlinePage FillInFields(User user)
+        public PayOnlinePage(IWebDriver webDriver) : base(webDriver)
         {
-            Logger.Log.Info("Fill fields on pay online page");
-
-            nameRenterField.SendKeys(user.Renter);
-            namePayerField.SendKeys(user.Name);
-            phoneField.SendKeys(user.PNumber);
-            emailField.SendKeys(user.EMail);
-            priceField.SendKeys(user.Price);
+            PageFactory.InitElements(webDriver, this);
+        }        
+        public override BasePage OpenPage()
+        {
+            webDriver.Navigate().GoToUrl(PageUrl);
 
             return this;
         }
-
-        public override BasePage OpenPage()
+        public PayOnlinePage FillNameRenterField(User user)
         {
-            Logger.Log.Info("Send button pay online");
+            nameRenterField.SendKeys(user.Renter);
 
-            webDriver.Navigate().GoToUrl("https://www.avtomaxi.ru/online-payment/");
+            return this;
+        }
+        public PayOnlinePage FillNamePayerField(User user)
+        {
+            namePayerField.SendKeys(user.Name);
+
+            return this;
+        }
+        public PayOnlinePage FillPhoneField(User user)
+        {
+            phoneField.SendKeys(user.PNumber);
+
+            return this;
+        }
+        public PayOnlinePage FillEmailField(User user)
+        {
+            emailField.SendKeys(user.EMail);
+
+            return this;
+        }
+        public PayOnlinePage FillPriceField(User user)
+        {
+            priceField.SendKeys(user.Price);
 
             return this;
         }
 
         public PayOnlinePage SendPayOnline()
         {
-            Logger.Log.Info("Send button pay online");
-
             sendPayOnlineButton.Click();
 
             return this;
         }
         public string GetErrorMessageText()
         {
-            Logger.Log.Info("Get error message text: " + errorMessageAlert.Text);
-
             return errorMessageAlert.Text;
         }
-        public PayOnlinePage(IWebDriver webDriver) : base(webDriver)
-        {
-            PageFactory.InitElements(webDriver, this);
-        }
+        
     }
 }

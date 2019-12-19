@@ -12,6 +12,8 @@ namespace Framework.Pages
 {
     public class AskQuestionPage : BasePage
     {
+        private const string PageUrl = "https://www.avtomaxi.ru/faq/";
+
         [FindsBy(How = How.Name, Using = "name")]
         private IWebElement nameField;
 
@@ -27,11 +29,24 @@ namespace Framework.Pages
         [FindsBy(How = How.ClassName, Using = "success_message")]
         private IWebElement errorMessageAlert;
 
-        public AskQuestionPage FillInFields(User user)
+        public AskQuestionPage(IWebDriver webDriver) : base(webDriver)
         {
-            Logger.Log.Info("FillInFields on AskQuestionPage");
+            PageFactory.InitElements(webDriver, this);
+        }
+        public override BasePage OpenPage()
+        {
+            webDriver.Navigate().GoToUrl(PageUrl);
 
+            return this;
+        }
+        public AskQuestionPage FillNameField(User user)
+        {
             nameField.SendKeys(user.Name);
+
+            return this;
+        }
+        public AskQuestionPage FillPhoneField(User user)
+        {
             phoneField.SendKeys(user.PNumber);
 
             return this;
@@ -39,8 +54,6 @@ namespace Framework.Pages
 
         public AskQuestionPage Submit()
         {
-            Logger.Log.Info("Submit send ask");
-
             sendButton.Click();
 
             return this;
@@ -48,30 +61,15 @@ namespace Framework.Pages
 
         public AskQuestionPage AskQuestionButton()
         {
-            Logger.Log.Info("Submit askQuestion");
-
             askQuestionButton.Click();
 
             return this;
-        }
-        public override BasePage OpenPage()
-        {
-            Logger.Log.Info("Open page Ask Question");
-
-            webDriver.Navigate().GoToUrl("https://www.avtomaxi.ru/faq/");
-
-            return this;
-        }        
+        }                
 
         public string GetErrorMessageText()
         {
-            Logger.Log.Info("Get error message text: " + errorMessageAlert.Text);
-
             return errorMessageAlert.Text;
         }
-        public AskQuestionPage(IWebDriver webDriver) : base(webDriver)
-        {
-            PageFactory.InitElements(webDriver, this);
-        }
+       
     }
 }

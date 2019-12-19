@@ -12,6 +12,8 @@ namespace Framework
 {
     public class StartPage : BasePage
     {
+        private const string PageUrl = "https://www.avtomaxi.ru/";
+
         [FindsBy(How = How.Id, Using = "some_class date_start")]
         private IWebElement rentalDateStart;
 
@@ -36,19 +38,30 @@ namespace Framework
         [FindsBy(How = How.XPath, Using = "success_message")]
         private IWebElement errorMessageAlert;
 
-        public StartPage FillInFields(User user)
+        public StartPage(IWebDriver webDriver) : base(webDriver)
         {
-            Logger.Log.Info("Fill fields with date on start page");
+            PageFactory.InitElements(webDriver, this);
+        }
+        public override BasePage OpenPage()
+        {
+            webDriver.Navigate().GoToUrl(PageUrl);
 
+            return this;
+        }
+        public StartPage FillRentalDateStartFields(User user)
+        {
             rentalDateStart.SendKeys(user.PastDate);
+
+            return this;
+        }
+        public StartPage FillRentalDateEnd(User user)
+        {
             rentalDateEnd.SendKeys(user.FutureDate);
 
             return this;
         }
         public StartPage ClickSubmitButton()
         {
-            Logger.Log.Info("Send submit");
-
             submitButton.Click();
 
             return this;
@@ -56,8 +69,6 @@ namespace Framework
 
         public CallBackPage ClickCallBackButton()
         {
-            Logger.Log.Info("Send call back button");
-
             callBackButton.Click();
 
             return new CallBackPage(this.webDriver);
@@ -65,17 +76,13 @@ namespace Framework
 
         public PayOnlinePage ClickPayOnlineButton()
         {
-            Logger.Log.Info("Open pay online page");
-
             payOnlineButton.Click();
 
             return new PayOnlinePage(this.webDriver);
         }
 
-        public AskQuestionPage ClickAskQuestionButton()
+        public AskQuestionPage ClickAskQuestionButtonToNextPage()
         {
-            Logger.Log.Info("Open asq question page");
-
             askQuestionButton.Click();
 
             return new AskQuestionPage(this.webDriver);
@@ -83,28 +90,13 @@ namespace Framework
 
         public ContactsPage ClickContactsButton()
         {
-            Logger.Log.Info("Send contasts button");
-
             contactsButton.Click();
 
             return new ContactsPage(this.webDriver);
-        }        
-        public override BasePage OpenPage()
-        {
-            Logger.Log.Info("Open start page");
-
-            webDriver.Navigate().GoToUrl("https://www.avtomaxi.ru/");
-
-            return this;
-        }
-        public StartPage(IWebDriver webDriver) : base(webDriver)
-        {
-            PageFactory.InitElements(webDriver, this);
-        }
+        } 
+        
         public string GetErrorMessageText()
         {
-            Logger.Log.Info("Get error message text: " + errorMessageAlert.Text);
-
             return errorMessageAlert.Text;
         }
 

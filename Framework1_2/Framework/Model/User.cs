@@ -15,7 +15,6 @@ namespace Framework.Model
         public string FutureDate { get; set; }
         public string PastDate { get; set; }
         public string Price { get; set; }
-
         public User(string renter, string name, string pNumber, string email,string futureDate, string pastDate, string price)
         {
             this.Renter = renter;
@@ -25,9 +24,7 @@ namespace Framework.Model
             this.FutureDate = futureDate;
             this.PastDate = pastDate;
             this.Price = price;
-        }
-
-        
+        }       
 
     }
 }

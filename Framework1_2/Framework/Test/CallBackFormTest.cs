@@ -7,27 +7,37 @@ using Framework.Test;
 using Framework.Services;
 using Framework.Model;
 using Framework.Utils;
+using log4net;
 
 namespace Framework.Test
 {
     [TestFixture]
     public class CallBackFormTest : CommonConditions
     {
+        const string ErrorTextForCallBackWithIncorrectData =
+            "Start SendCallBackWithCorrectData unit test.";
+
+        const string ErrorTextForSendIncorrectEmail =
+            "Start SendIncorrectEMailAddr unit test.";
+
+        static private ILog Log = LogManager.GetLogger(typeof(CallBackFormTest));
+
         [Test]
         [Category("FormTest")]
         public void SendCallBackWithCorrectData()
         {
-            Logger.Log.Info("Start SendCallBackWithCorrectData unit test.");
-
             string expectingMessage = ErrorCreater.CorrectNamePhoneEmail();
 
             User user = UserCreater.WithAllProperties();
 
-            string errorMessage = (new StartPage(webDriver).OpenPage() as StartPage)
+            string errorMessage = new StartPage(webDriver)
                                                 .ClickCallBackButton()
-                                                .FillInFields(user)
+                                                .FillINameField(user)
+                                                .FillIPhoneField(user)
                                                 .SendCall()
                                                 .GetMessageText();
+
+            Log.Info(ErrorTextForCallBackWithIncorrectData);
 
             Assert.AreEqual(expectingMessage, errorMessage);
         }
@@ -36,17 +46,18 @@ namespace Framework.Test
         [Category("FormTest")]
         public void SendEMailIncorrectEMailAddr()
         {
-            Logger.Log.Info("Start SendEMailIncorrectEMailAddr unit test.");
-
             string expectingMessage = ErrorCreater.FormWithInvalidEMail();
 
             User user = UserCreater.UserWithIncorrectEmail();
 
-            string errorMessage = (new StartPage(webDriver).OpenPage() as StartPage)
+            string errorMessage = new StartPage(webDriver)
                                                 .ClickCallBackButton()
-                                                .FillInFields(user)
+                                                .FillIPhoneField(user)
+                                                .FillINameField(user)
                                                 .SendCall()
                                                 .GetMessageText();
+
+            Logger.Log.Info(ErrorTextForSendIncorrectEmail);
 
             Assert.AreEqual(expectingMessage, errorMessage);
         }
