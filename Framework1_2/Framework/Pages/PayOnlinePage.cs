@@ -36,7 +36,7 @@ namespace Framework.Pages
         [FindsBy(How = How.ClassName, Using = "continue_pay")]
         private IWebElement errorMessageAlert;
 
-        public PayOnlinePage(IWebDriver webDriver) : base(webDriver)
+        public PayOnlinePage() : base()
         {
             PageFactory.InitElements(webDriver, this);
         }        

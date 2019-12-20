@@ -29,7 +29,7 @@ namespace Framework.Pages
         [FindsBy(How = How.ClassName, Using = "success_message")]
         private IWebElement errorMessageAlert;
 
-        public AskQuestionPage(IWebDriver webDriver) : base(webDriver)
+        public AskQuestionPage() : base()
         {
             PageFactory.InitElements(webDriver, this);
         }

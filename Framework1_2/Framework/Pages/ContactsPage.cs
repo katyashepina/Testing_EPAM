@@ -32,7 +32,7 @@ namespace Framework.Pages
         [FindsBy(How = How.Id, Using = "success-message")]
         private IWebElement errorMessageAlert;
 
-        public ContactsPage(IWebDriver webDriver) : base(webDriver)
+        public ContactsPage() : base()
         {
             PageFactory.InitElements(webDriver, this);
         }

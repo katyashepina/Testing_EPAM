@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Framework.driver;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -14,9 +15,9 @@ namespace Framework.Pages
 
         protected IWebDriver webDriver;
 
-        protected BasePage(IWebDriver webDriver)
+        protected BasePage()
         {
-            this.webDriver = webDriver;
+            this.webDriver = DriverSingleton.GetInstance();
         }
         public string GetUrlPage()
         {

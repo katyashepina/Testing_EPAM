@@ -22,15 +22,14 @@ namespace Framework.Test
 
         static private ILog Log = LogManager.GetLogger(typeof(CallBackFormTest));
 
-        [Test]
-        [Category("FormTest")]
+        [Test,Description("TestForFormWithCallBackWithCorrectData")]
         public void SendCallBackWithCorrectData()
         {
             string expectingMessage = ErrorCreater.CorrectNamePhoneEmail();
 
             User user = UserCreater.WithAllProperties();
 
-            string errorMessage = new StartPage(webDriver)
+            string errorMessage = new StartPage()
                                                 .ClickCallBackButton()
                                                 .FillINameField(user)
                                                 .FillIPhoneField(user)
@@ -39,18 +38,17 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForCallBackWithIncorrectData);
 
-            Assert.AreEqual(expectingMessage, errorMessage);
+            Assert.AreEqual(expectingMessage, errorMessage, "SendCallBackWithCorrectData");
         }
 
-        [Test]
-        [Category("FormTest")]
+        [Test, Description("TestForFormWithCallBackWithIncorrectData")]
         public void SendEMailIncorrectEMailAddr()
         {
             string expectingMessage = ErrorCreater.FormWithInvalidEMail();
 
             User user = UserCreater.UserWithIncorrectEmail();
 
-            string errorMessage = new StartPage(webDriver)
+            string errorMessage = new StartPage()
                                                 .ClickCallBackButton()
                                                 .FillIPhoneField(user)
                                                 .FillINameField(user)
@@ -59,7 +57,7 @@ namespace Framework.Test
 
             Logger.Log.Info(ErrorTextForSendIncorrectEmail);
 
-            Assert.AreEqual(expectingMessage, errorMessage);
+            Assert.AreEqual(expectingMessage, errorMessage, "SendEMailIncorrectEMailAddr");
         }
 
     }

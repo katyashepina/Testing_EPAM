@@ -21,7 +21,7 @@ namespace Framework.Test
         [SetUp]
         public void StartBrowserAndGoToTheSite()
         {
-            webDriver = DriverSingleton.GetWebDriver();
+            webDriver = DriverSingleton.GetInstance();
         }
 
         [TearDown]

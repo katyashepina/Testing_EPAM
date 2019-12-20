@@ -26,7 +26,7 @@ namespace Framework
         [FindsBy(How = How.ClassName, Using = "success_message")]
         private IWebElement errorMessageAlert;
 
-        public CallBackPage(IWebDriver webDriver) : base(webDriver)
+        public CallBackPage() : base()
         {
             PageFactory.InitElements(webDriver, this);
         }

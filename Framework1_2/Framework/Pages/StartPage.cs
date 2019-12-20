@@ -38,9 +38,11 @@ namespace Framework
         [FindsBy(How = How.XPath, Using = "success_message")]
         private IWebElement errorMessageAlert;
 
-        public StartPage(IWebDriver webDriver) : base(webDriver)
+        public StartPage() : base()
         {
             PageFactory.InitElements(webDriver, this);
+
+            OpenPage();
         }
         public override BasePage OpenPage()
         {
@@ -71,28 +73,28 @@ namespace Framework
         {
             callBackButton.Click();
 
-            return new CallBackPage(this.webDriver);
+            return new CallBackPage();
         }
 
         public PayOnlinePage ClickPayOnlineButton()
         {
             payOnlineButton.Click();
 
-            return new PayOnlinePage(this.webDriver);
+            return new PayOnlinePage();
         }
 
         public AskQuestionPage ClickAskQuestionButtonToNextPage()
         {
             askQuestionButton.Click();
 
-            return new AskQuestionPage(this.webDriver);
+            return new AskQuestionPage();
         }
 
         public ContactsPage ClickContactsButton()
         {
             contactsButton.Click();
 
-            return new ContactsPage(this.webDriver);
+            return new ContactsPage();
         } 
         
         public string GetErrorMessageText()

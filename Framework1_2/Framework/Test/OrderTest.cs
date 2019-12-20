@@ -35,15 +35,15 @@ namespace Framework.Test
 
         static private ILog Log = LogManager.GetLogger(typeof(OrderTest));
 
-        [Test]
-        [Category("CalendarTest")]
+
+        [Test, Description("TestForCalendarWithStartDateLeaseEndDate")]
         public void StartDateLeaseEndDate()
         {
             string expectingMessage = ErrorCreater.StartDateLeaseEndDate();
 
             User user = UserCreater.UserWithDateLeaseEndDate();
 
-            string errorMessage = new StartPage(webDriver)
+            string errorMessage = new StartPage()
                                             .FillRentalDateEnd(user)
                                             .FillRentalDateStartFields(user)
                                             .ClickSubmitButton()
@@ -51,18 +51,17 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForStartDateLeaseEndDate);
             
-            Assert.AreEqual(expectingMessage, errorMessage);
+            Assert.AreEqual(expectingMessage, errorMessage, "StartDateLeaseEndDate");
         }
 
-        [Test]
-        [Category("CalendarTest")]
+        [Test, Description("TestForCalendarWithSimilarStartDateAndEndDate")]
         public void SimilarStartDateAndEndDate()
         {
             string expectingMessage = ErrorCreater.SimilarStartDateAndEndDate();
 
             User user = UserCreater.UserWithSimilarStartDateAndEndDate();
 
-            string errorMessage = new StartPage(webDriver)
+            string errorMessage = new StartPage()
                                             .FillRentalDateEnd(user)
                                             .FillRentalDateStartFields(user)
                                             .ClickSubmitButton()
@@ -70,18 +69,18 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForSimilarStartDateAndEdDate);
 
-            Assert.AreEqual(expectingMessage, errorMessage);
+            Assert.AreEqual(expectingMessage, errorMessage, "SimilarStartDateAndEndDate");
         }
+        
 
-        [Test]
-        [Category("PositiveTest")]
-        public void SendOrderPositiveTest()
+        [Test, Description("TestForSendOrderAutoWithDriver")]
+        public void endOrderAutoWithDriver()
         {
             string expectingMessage = ErrorCreater.CorrectNamePhoneEmail();
 
             User user = UserCreater.WithAllProperties();
 
-            string errorMessage = new StartPage(webDriver)
+            string errorMessage = new StartPage()
                                             .ClickContactsButton()
                                             .WriteButton()
                                             .FillNameField(user)
@@ -92,18 +91,17 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForSendOrderPositiveTest);
 
-            Assert.AreEqual(expectingMessage, errorMessage);
+            Assert.AreEqual(expectingMessage, errorMessage, "endOrderAutoWithDriver");
         }
 
-        [Test]
-        [Category("AskQuestionsTest")]
+        [Test, Description("TestForFormSendAskQuestionWithInvalidEmail")]
         public void SendAskQuestionWithInvalidEmail()
         {
             string expectingMessage = ErrorCreater.FormWithInvalidEMail();
 
             User user = UserCreater.UserWithIncorrectEmail();
 
-            string errorMessage = new StartPage(webDriver)
+            string errorMessage = new StartPage()
                                             .ClickAskQuestionButtonToNextPage()
                                             .AskQuestionButton()
                                             .FillNameField(user)
@@ -113,18 +111,17 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForSendAsqQuestionWithInvalidData);
 
-            Assert.AreEqual(expectingMessage, errorMessage);
+            Assert.AreEqual(expectingMessage, errorMessage, "SendAskQuestionWithInvalidEmail");
         }
 
-        [Test]
-        [Category("PositiveTest")]
+        [Test, Description("TestForSendAskQuestionWithCorrectData")]
         public void SendAskQuestionWithCorrectData()
         {
             string expectingMessage = ErrorCreater.CorrectNamePhoneEmail();
 
             User user = UserCreater.WithAllProperties();
 
-            string errorMessage = new StartPage(webDriver)
+            string errorMessage = new StartPage()
                                             .ClickAskQuestionButtonToNextPage()
                                             .AskQuestionButton()
                                             .FillNameField(user)
@@ -134,18 +131,17 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForDendAsqQuestionWithCorrectData);
 
-            Assert.AreEqual(expectingMessage, errorMessage);
+            Assert.AreEqual(expectingMessage, errorMessage, "SendAskQuestionWithCorrectData");
         }
 
-        [Test]
-        [Category("AskQuestionsTest")]
+        [Test, Description("TestForSendAskQuestionWithIncorrectPhone")]
         public void SendAskQuestionWithIncorrectPhone()
         {
             string expectingMessage = ErrorCreater.FormWithInvalidPhone();
 
             User user = UserCreater.UserWithIncorrectPhone();
 
-            string errorMessage = new StartPage(webDriver)
+            string errorMessage = new StartPage()
                                             .ClickAskQuestionButtonToNextPage()
                                             .AskQuestionButton()
                                             .FillNameField(user)
@@ -155,7 +151,7 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForAsqQuestionWithIncorrectPhone);
 
-            Assert.AreEqual(expectingMessage, errorMessage);
+            Assert.AreEqual(expectingMessage, errorMessage, "SendAskQuestionWithIncorrectPhone");
         }
     }
 }

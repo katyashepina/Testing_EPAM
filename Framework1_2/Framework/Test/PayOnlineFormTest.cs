@@ -26,15 +26,15 @@ namespace Framework.Test
         
         static private ILog Log = LogManager.GetLogger(typeof(PayOnlineFormTest));
 
-        [Test]
-        [Category("FormTest")]
+
+        [Test, Description("TestForSendWithCorrectData")]
         public void SendWithCorrectData()
         {
             string expectingMessage = ErrorCreater.CorrectNamePhoneEmail();
 
             User user = UserCreater.WithAllProperties();
 
-            string errorMessage = new PayOnlinePage(webDriver)
+            string errorMessage = new PayOnlinePage()
                                     .FillNameRenterField(user)
                                     .FillNameRenterField(user)
                                     .FillEmailField(user)
@@ -45,18 +45,18 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForSendWithCorrectData);
 
-            Assert.AreEqual(expectingMessage, errorMessage);
+            Assert.AreEqual(expectingMessage, errorMessage, "SendWithCorrectData");
         }
 
-        [Test]
-        [Category("FormTest")]
+
+        [Test, Description("TestForSendWithOutCorrectData")]
         public void SendWithOutCorrectData()
         {
             string expectingMessage = ErrorCreater.SimilarStartDateAndEndDate();
 
             User user = UserCreater.UserWithSimilarStartDateAndEndDate();
 
-            string errorMessage = new PayOnlinePage(webDriver)
+            string errorMessage = new PayOnlinePage()
                                     .FillNameRenterField(user)
                                     .FillNameRenterField(user)
                                     .FillEmailField(user)
@@ -67,18 +67,18 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForSendPayOnlineWithInCorrectData);
 
-            Assert.AreEqual(expectingMessage, errorMessage);
+            Assert.AreEqual(expectingMessage, errorMessage, "SendWithOutCorrectData");
         }
 
-        [Test]
-        [Category("FormTest")]
+
+        [Test, Description("TestForSendWithOutCorrectPrice")]
         public void SendWithOutCorrectPrice()
         {
             string expectingMessage = ErrorCreater.FormWithInvalidPrice();
 
             User user = UserCreater.UserWithIncorrectPrice();
 
-            string errorMessage = new PayOnlinePage(webDriver)
+            string errorMessage = new PayOnlinePage()
                                     .FillNameRenterField(user)
                                     .FillNameRenterField(user)
                                     .FillEmailField(user)
@@ -89,7 +89,7 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForSendWithOutCorrectPrice);
 
-            Assert.AreEqual(expectingMessage, errorMessage);
+            Assert.AreEqual(expectingMessage, errorMessage, "SendWithOutCorrectPrice");
         }
     }
 }
