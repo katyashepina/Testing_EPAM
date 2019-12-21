@@ -23,6 +23,7 @@ namespace Framework.driver
         {
             if(webDriver==null)
             {
+                Logger.Log.Info("Inizialized.");
                 switch (TestContext.Parameters.Get("browser"))
                 {                    
                     case "edge":
@@ -38,7 +39,7 @@ namespace Framework.driver
                         webDriver = new ChromeDriver();
                         break;
                 }
-
+                Logger.Log.Info("Started.");
                 webDriver.Manage().Window.Maximize();
                 webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
             }
@@ -50,6 +51,7 @@ namespace Framework.driver
         {
             webDriver.Quit();
             webDriver = null;
+            Logger.Log.Info("Closed.");
         }
     }
 }

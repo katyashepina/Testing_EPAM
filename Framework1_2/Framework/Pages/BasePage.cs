@@ -11,17 +11,15 @@ namespace Framework.Pages
 {
     public abstract class BasePage
     {
-        public abstract BasePage OpenPage();
-
-        protected IWebDriver webDriver;
+        public abstract BasePage OpenPage();zz
 
         protected BasePage()
         {
-            this.webDriver = DriverSingleton.GetInstance();
+            DriverSingleton.GetInstance();
         }
         public string GetUrlPage()
         {
-            return this.webDriver.Url;
+            return DriverSingleton.GetInstance().Url;
         }
     }
 }

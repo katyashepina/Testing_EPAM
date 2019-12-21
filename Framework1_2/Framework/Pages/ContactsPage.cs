@@ -1,4 +1,5 @@
-﻿using Framework.Model;
+﻿using Framework.driver;
+using Framework.Model;
 using Framework.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
@@ -32,13 +33,11 @@ namespace Framework.Pages
         [FindsBy(How = How.Id, Using = "success-message")]
         private IWebElement errorMessageAlert;
 
-        public ContactsPage() : base()
-        {
-            PageFactory.InitElements(webDriver, this);
-        }
+        public ContactsPage() : base() { }
+      
         public override BasePage OpenPage()
         {
-            webDriver.Navigate().GoToUrl(PageUrl);
+            DriverSingleton.GetInstance().Navigate().GoToUrl(PageUrl);
 
             return this;
         }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Framework.Pages;
 using Framework.Model;
 using Framework.Utils;
+using Framework.driver;
 
 namespace Framework
 {
@@ -26,13 +27,11 @@ namespace Framework
         [FindsBy(How = How.ClassName, Using = "success_message")]
         private IWebElement errorMessageAlert;
 
-        public CallBackPage() : base()
-        {
-            PageFactory.InitElements(webDriver, this);
-        }
+        public CallBackPage() : base() { }
+        
         public override BasePage OpenPage()
         {
-            webDriver.Navigate().GoToUrl(PageUrl);
+            DriverSingleton.GetInstance().Navigate().GoToUrl(PageUrl);
 
             return this;
         }

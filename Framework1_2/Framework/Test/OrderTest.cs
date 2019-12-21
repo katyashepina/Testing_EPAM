@@ -51,7 +51,7 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForStartDateLeaseEndDate);
             
-            Assert.AreEqual(expectingMessage, errorMessage, "StartDateLeaseEndDate");
+            Assert.AreEqual(expectingMessage, errorMessage, "Start date is incorrect, exceeds end date");
         }
 
         [Test, Description("TestForCalendarWithSimilarStartDateAndEndDate")]
@@ -69,12 +69,12 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForSimilarStartDateAndEdDate);
 
-            Assert.AreEqual(expectingMessage, errorMessage, "SimilarStartDateAndEndDate");
+            Assert.AreEqual(expectingMessage, errorMessage, "Start date is incorrect, equal to end date");
         }
         
 
         [Test, Description("TestForSendOrderAutoWithDriver")]
-        public void endOrderAutoWithDriver()
+        public void SendOrderAutoWithDriver()
         {
             string expectingMessage = ErrorCreater.CorrectNamePhoneEmail();
 
@@ -91,7 +91,7 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForSendOrderPositiveTest);
 
-            Assert.AreEqual(expectingMessage, errorMessage, "endOrderAutoWithDriver");
+            Assert.AreEqual(expectingMessage, errorMessage, "Data entered correctly");
         }
 
         [Test, Description("TestForFormSendAskQuestionWithInvalidEmail")]
@@ -111,7 +111,7 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForSendAsqQuestionWithInvalidData);
 
-            Assert.AreEqual(expectingMessage, errorMessage, "SendAskQuestionWithInvalidEmail");
+            Assert.AreEqual(expectingMessage, errorMessage, "Email is incorrect for asking question");
         }
 
         [Test, Description("TestForSendAskQuestionWithCorrectData")]
@@ -131,7 +131,7 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForDendAsqQuestionWithCorrectData);
 
-            Assert.AreEqual(expectingMessage, errorMessage, "SendAskQuestionWithCorrectData");
+            Assert.AreEqual(expectingMessage, errorMessage, "All data is incorrect for asking question");
         }
 
         [Test, Description("TestForSendAskQuestionWithIncorrectPhone")]
@@ -151,7 +151,7 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForAsqQuestionWithIncorrectPhone);
 
-            Assert.AreEqual(expectingMessage, errorMessage, "SendAskQuestionWithIncorrectPhone");
+            Assert.AreEqual(expectingMessage, errorMessage, "Phone is incorrect for asking question");
         }
     }
 }

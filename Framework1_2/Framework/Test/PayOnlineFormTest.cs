@@ -45,14 +45,14 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForSendWithCorrectData);
 
-            Assert.AreEqual(expectingMessage, errorMessage, "SendWithCorrectData");
+            Assert.AreEqual(expectingMessage, errorMessage, "All data is correct for pay online");
         }
 
 
         [Test, Description("TestForSendWithOutCorrectData")]
         public void SendWithOutCorrectData()
         {
-            string expectingMessage = ErrorCreater.SimilarStartDateAndEndDate();
+            string expectingMessage = ErrorCreater.FormWithInvalidPhone();
 
             User user = UserCreater.UserWithSimilarStartDateAndEndDate();
 
@@ -67,7 +67,7 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForSendPayOnlineWithInCorrectData);
 
-            Assert.AreEqual(expectingMessage, errorMessage, "SendWithOutCorrectData");
+            Assert.AreEqual(expectingMessage, errorMessage, "Phone is incorrect for pay online");
         }
 
 
@@ -89,7 +89,7 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForSendWithOutCorrectPrice);
 
-            Assert.AreEqual(expectingMessage, errorMessage, "SendWithOutCorrectPrice");
+            Assert.AreEqual(expectingMessage, errorMessage, "Price is incorrect for pay online");
         }
     }
 }

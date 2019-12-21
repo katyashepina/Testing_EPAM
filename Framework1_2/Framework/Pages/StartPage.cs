@@ -7,6 +7,7 @@ using Framework.Pages;
 using Framework.Utils;
 using Framework.Model;
 using System.Threading;
+using Framework.driver;
 
 namespace Framework
 {
@@ -40,13 +41,11 @@ namespace Framework
 
         public StartPage() : base()
         {
-            PageFactory.InitElements(webDriver, this);
-
             OpenPage();
         }
         public override BasePage OpenPage()
         {
-            webDriver.Navigate().GoToUrl(PageUrl);
+            DriverSingleton.GetInstance().Navigate().GoToUrl(PageUrl);
 
             return this;
         }

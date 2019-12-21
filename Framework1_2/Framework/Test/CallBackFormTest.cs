@@ -38,7 +38,7 @@ namespace Framework.Test
 
             Log.Info(ErrorTextForCallBackWithIncorrectData);
 
-            Assert.AreEqual(expectingMessage, errorMessage, "SendCallBackWithCorrectData");
+            Assert.AreEqual(expectingMessage, errorMessage, "Data entered is correct for collback");
         }
 
         [Test, Description("TestForFormWithCallBackWithIncorrectData")]
@@ -57,7 +57,7 @@ namespace Framework.Test
 
             Logger.Log.Info(ErrorTextForSendIncorrectEmail);
 
-            Assert.AreEqual(expectingMessage, errorMessage, "SendEMailIncorrectEMailAddr");
+            Assert.AreEqual(expectingMessage, errorMessage, "Email entered incorrectly for callback");
         }
 
     }

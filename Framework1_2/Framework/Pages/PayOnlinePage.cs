@@ -1,4 +1,5 @@
-﻿using Framework.Model;
+﻿using Framework.driver;
+using Framework.Model;
 using Framework.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
@@ -36,13 +37,11 @@ namespace Framework.Pages
         [FindsBy(How = How.ClassName, Using = "continue_pay")]
         private IWebElement errorMessageAlert;
 
-        public PayOnlinePage() : base()
-        {
-            PageFactory.InitElements(webDriver, this);
-        }        
+        public PayOnlinePage() : base() { }
+      
         public override BasePage OpenPage()
         {
-            webDriver.Navigate().GoToUrl(PageUrl);
+            DriverSingleton.GetInstance().Navigate().GoToUrl(PageUrl);
 
             return this;
         }
