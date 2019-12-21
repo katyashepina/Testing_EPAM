@@ -23,23 +23,25 @@ namespace Framework.driver
         {
             if(webDriver==null)
             {
-                Logger.Log.Info("Inizialized.");
+                Logger.Log.Info("Inizializing driver.");
                 switch (TestContext.Parameters.Get("browser"))
                 {                    
                     case "edge":
                         new DriverManager().SetUpDriver(new EdgeConfig());
                         webDriver = new EdgeDriver();
+                        Logger.Log.Info("Start driver.");
                         break;
                     case "firefox":
                         new DriverManager().SetUpDriver(new FirefoxConfig());
                         webDriver = new FirefoxDriver();
+                        Logger.Log.Info("Start driver.");
                         break;
                     default:
                         new DriverManager().SetUpDriver(new ChromeConfig());
                         webDriver = new ChromeDriver();
+                        Logger.Log.Info("Start driver.");
                         break;
                 }
-                Logger.Log.Info("Started.");
                 webDriver.Manage().Window.Maximize();
                 webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
             }
@@ -51,7 +53,7 @@ namespace Framework.driver
         {
             webDriver.Quit();
             webDriver = null;
-            Logger.Log.Info("Closed.");
+            Logger.Log.Info("Closed driver.");
         }
     }
 }
