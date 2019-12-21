@@ -11,7 +11,7 @@ namespace Framework.Pages
 {
     public abstract class BasePage
     {
-        public abstract BasePage OpenPage();zz
+        public abstract BasePage OpenPage();
 
         protected BasePage()
         {
