@@ -1,0 +1,1 @@
+D:\5 СЕМЕСТР\Тестирование EPAM\testing_EPAM\Testing_EPAM\PageObject\WebDriverFirst\obj\Debug\WebDriverFirst.csprojAssemblyReference.cache

@@ -1,0 +1,54 @@
+2020-01-18 22:43:48,105 [NonParallelWorker] INFO  LOGGER [(null)] - Create driver
+2020-01-18 22:43:57,855 [NonParallelWorker] INFO  LOGGER [(null)] - Go to url https://paytm.com/flights/
+2020-01-18 22:43:58,115 [NonParallelWorker] INFO  LOGGER [(null)] - Click Departure DateField
+2020-01-18 22:43:58,977 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
+2020-01-18 22:43:58,977 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
+2020-01-18 22:44:08,956 [NonParallelWorker] INFO  LOGGER [(null)] - Create driver
+2020-01-18 22:44:17,876 [NonParallelWorker] INFO  LOGGER [(null)] - Go to url https://paytm.com/flights/
+2020-01-18 22:44:17,965 [NonParallelWorker] INFO  LOGGER [(null)] - Click Round Trip Radio Button
+2020-01-18 22:44:19,005 [NonParallelWorker] INFO  LOGGER [(null)] - ReturnDate Field Is Clickable
+2020-01-18 22:44:19,124 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
+2020-01-18 22:44:19,125 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
+2020-01-18 22:44:28,921 [NonParallelWorker] INFO  LOGGER [(null)] - Create driver
+2020-01-18 22:44:37,538 [NonParallelWorker] INFO  LOGGER [(null)] - Go to url https://paytm.com/flights/
+2020-01-18 22:44:37,604 [NonParallelWorker] INFO  LOGGER [(null)] - Choose travellers field
+2020-01-18 22:44:37,979 [NonParallelWorker] INFO  LOGGER [(null)] - Add9adults to traveller
+2020-01-18 22:44:37,979 [NonParallelWorker] INFO  LOGGER [(null)] - Get Count Of Adults
+2020-01-18 22:44:38,107 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
+2020-01-18 22:44:38,107 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
+2020-01-18 22:44:47,772 [NonParallelWorker] INFO  LOGGER [(null)] - Create driver
+2020-01-18 22:44:58,467 [NonParallelWorker] INFO  LOGGER [(null)] - Go to url https://paytm.com/flights/
+2020-01-18 22:44:58,531 [NonParallelWorker] INFO  LOGGER [(null)] - Choose travellers field
+2020-01-18 22:44:58,942 [NonParallelWorker] INFO  LOGGER [(null)] - Add9adults to traveller
+2020-01-18 22:44:58,942 [NonParallelWorker] INFO  LOGGER [(null)] - Get Count Of Adults
+2020-01-18 22:44:59,091 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
+2020-01-18 22:44:59,091 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
+2020-01-18 22:45:09,467 [NonParallelWorker] INFO  LOGGER [(null)] - Create driver
+2020-01-18 22:45:18,521 [NonParallelWorker] INFO  LOGGER [(null)] - Go to url https://paytm.com/flights/
+2020-01-18 22:45:18,581 [NonParallelWorker] INFO  LOGGER [(null)] - Choose travellers field
+2020-01-18 22:45:18,656 [NonParallelWorker] INFO  LOGGER [(null)] - Add1Infants ToTraveller
+2020-01-18 22:45:18,720 [NonParallelWorker] INFO  LOGGER [(null)] - Minus1Adults ToTraveller
+2020-01-18 22:45:18,721 [NonParallelWorker] INFO  LOGGER [(null)] - Get Count Of Adults
+2020-01-18 22:45:18,846 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
+2020-01-18 22:45:18,846 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
+2020-01-18 22:45:30,901 [NonParallelWorker] INFO  LOGGER [(null)] - Create driver
+2020-01-18 22:46:09,713 [NonParallelWorker] INFO  LOGGER [(null)] - Go to url https://paytm.com/flights/
+2020-01-18 22:46:12,055 [NonParallelWorker] INFO  LOGGER [(null)] - Choose identical departure and arrival city
+2020-01-18 22:46:12,132 [NonParallelWorker] INFO  LOGGER [(null)] - Click SearchButton
+2020-01-18 22:46:12,133 [NonParallelWorker] INFO  LOGGER [(null)] - Get text error
+2020-01-18 22:46:12,263 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
+2020-01-18 22:46:12,263 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
+2020-01-18 22:46:23,447 [NonParallelWorker] INFO  LOGGER [(null)] - Create driver
+2020-01-18 22:46:33,250 [NonParallelWorker] INFO  LOGGER [(null)] - Go to url https://paytm.com/flights/
+2020-01-18 22:46:35,546 [NonParallelWorker] INFO  LOGGER [(null)] - Choose departure city
+2020-01-18 22:46:35,628 [NonParallelWorker] INFO  LOGGER [(null)] - Click SearchButton
+2020-01-18 22:46:35,629 [NonParallelWorker] INFO  LOGGER [(null)] - Get text error
+2020-01-18 22:46:35,843 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
+2020-01-18 22:46:35,843 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
+2020-01-18 22:46:46,563 [NonParallelWorker] INFO  LOGGER [(null)] - Create driver
+2020-01-18 22:46:55,811 [NonParallelWorker] INFO  LOGGER [(null)] - Go to url https://paytm.com/flights/
+2020-01-18 22:46:57,121 [NonParallelWorker] INFO  LOGGER [(null)] - Choose arrival city
+2020-01-18 22:46:57,204 [NonParallelWorker] INFO  LOGGER [(null)] - Click SearchButton
+2020-01-18 22:46:57,204 [NonParallelWorker] INFO  LOGGER [(null)] - Get text error
+2020-01-18 22:46:57,657 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
+2020-01-18 22:46:57,657 [NonParallelWorker] INFO  LOGGER [(null)] - Close driver
