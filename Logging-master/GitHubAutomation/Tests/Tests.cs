@@ -73,20 +73,15 @@ namespace TestAutomation
             Assert.IsTrue(mainPage.ReturnDateFieldIsClickable());
         }
 
-        //[Test]
-        //public void BookTicketWithoutDetalesTest()
-        //{
-        //    BookPage bookPage = new MainPage(DriverSingleton.GetDriver())
-        //        .OpenPage()
-        //        .ChooseDepartureCity(RouteCreator.WithAllProperties())
-        //        .ChooseArrivalCity(RouteCreator.Empty())
-        //        .ClickSearchButton()
-        //        .ClickBookButton(RouteCreator.WithAllProperties())
-        //        .ClickContunue()
-        //        .ClickProccedToPayButton();
-        //    Assert.AreEqual("Please enter traveller details to proceed.", bookPage.GetError());
-        //}
-
+        [Test]
+        public void DateFieldIsClickableWhenYouChooseRoundTripTestTWo()
+        {
+            MainPage mainPage = new MainPage(DriverSingleton.GetDriver())
+                  .OpenPage()
+                  .ClickRoundTripRadioButton();
+            Assert.IsTrue(mainPage.ReturnDateFieldIsClickable());
+        }
+        
         [Test]
         public void EnterOneInfantsWithoutAdults()
         {
@@ -98,19 +93,16 @@ namespace TestAutomation
             Assert.AreEqual(ACCEPTABLE_NUMBER_OF_ADULTS_WITH_ONE_INFLANT, mainPage.GetCountOfAdults());
         }
 
-        //[Test]
-        //public void BookTicketPersonalInformationTest()
-        //{
-        //    BookPage bookPage = new MainPage(DriverSingleton.GetDriver())
-        //          .OpenPage()
-        //          .ChooseDepartureCity(RouteCreator.WithAllProperties())
-        //          .ChooseArrivalCity(RouteCreator.Empty())
-        //          .ClickSearchButton()
-        //          .ClickBookButton(RouteCreator.Empty())
-        //          .ClickContunue()
-        //          .ClickSkipButton();            
-        //    Assert.AreEqual("Please enter the travellers details", bookPage.GetNotice());
-        //}
+        [Test]
+        public void EnterOneInfantsWithoutAdultsTwo()
+        {
+            MainPage mainPage = new MainPage(DriverSingleton.GetDriver())
+                .OpenPage()
+                .ChooseTravellersField()
+                .AddInfantsToTravellers(1)
+                .MinusAdultsToTravellers(1);
+            Assert.AreEqual(ACCEPTABLE_NUMBER_OF_ADULTS_WITH_ONE_INFLANT, mainPage.GetCountOfAdults());
+        }
 
         [Test]
         public void BookTicketForCurrentDayMinusOneDayTest()
