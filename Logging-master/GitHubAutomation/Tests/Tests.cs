@@ -74,7 +74,7 @@ namespace TestAutomation
         }
 
         [Test]
-        public void DateFieldIsClickableWhenYouChooseRoundTripTestTWo()
+        public void DateFieldIsClickableWhenYouChooseRoundTripTestIncorrect()
         {
             MainPage mainPage = new MainPage(DriverSingleton.GetDriver())
                   .OpenPage()
@@ -94,7 +94,7 @@ namespace TestAutomation
         }
 
         [Test]
-        public void EnterOneInfantsWithoutAdultsTwo()
+        public void EnterOneInfantsWithoutAdultsIncorrect()
         {
             MainPage mainPage = new MainPage(DriverSingleton.GetDriver())
                 .OpenPage()

@@ -34,7 +34,7 @@ namespace TestAutomation.Utils
             }
 
             DriverSingleton.CloseDriver();
-            Logger.Log.Info("Close driver");
+           // Logger.Log.Info("Close driver");
         }
     }
 }
